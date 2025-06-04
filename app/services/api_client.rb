@@ -1,13 +1,12 @@
 class ApiClient
-
   QISCUS_BASE_URL = ENV["QISCUS_BASE_URL"]
   QISCUS_ADMIN_TOKEN = ENV["QISCUS_ADMIN_TOKEN"]
 
-  def self.get_available_agents 
+  def self.get_available_agents
     get("/admin/agents/available")
   end
 
-  private 
+  private
 
   def self.headers
     {
