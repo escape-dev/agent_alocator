@@ -3,15 +3,16 @@ class ApiClient
     response = get("/api/v2/admin/agents")
     agents = response.dig("data", "agents") || []
 
-    agents.select { |agent| agent["is_available"] && !agent["force_offline"] }
-      .map do |agent|
-        {
-          id: agent["id"],
-          email: agent["email"],
-          name: agent["name"],
-          current_customer_count: agent["current_customer_count"]
-        }
-      end
+    agents.filter_map do |agent|
+      next unless  agent["is_available"] && !agent["force_offline"]
+
+      {
+        id: agent["id"],
+        email: agent["email"],
+        name: agent["name"],
+        current_customer_count: agent["current_customer_count"]
+      }
+    end
   end
 
   def self.assign_agent(room_id:, agent_id:)
