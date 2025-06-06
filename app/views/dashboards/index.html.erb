@@ -1,0 +1,57 @@
+<h1 class="text-4xl font-semibold text-center">AGENT ALLOCATOR</h1>
+
+<div class="mt-16 mx-5 w-full flex gap-5">
+  <div class="w-full border border-gray-700 rounded-lg shadow-sm space-y-2 p-6 bg-gray-800">
+    <h2 class="text-2xl">Queued Room</h1>
+    <div class="relative overflow-x-auto rounded-lg">
+      <table class="w-full text-sm text-left rtl:text-right">
+        <thead class="uppercase bg-gray-700">
+          <tr>
+            <th class="px-6 py-3">Room Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @room_queues.each do |room_queue| %>
+            <tr class="bg-gray-800 border-gray-700">
+              <td class="border-gray-700 text-white px-6 py-3"><%= room_queue.room_id %></td>
+            </tr>
+          <% end %>
+          <% if @room_queues.empty? %>
+            <tr class="bg-gray-800 border-gray-700">
+              <td class="border-gray-700 px-6 py-3 text-center"> There's no queued room </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="w-full border border-gray-700 rounded-lg shadow-sm space-y-2 p-6 bg-gray-800">
+    <h1 class="text-2xl">Available Agent</h1>
+    <div class="relatice overflow-x-auto rounded-lg">
+      <table class="w-full text-sm text-left rtl:text-right">
+        <thead class="uppercase bg-gray-700">
+          <tr>
+            <th class="px-6 py-3">Name</th>
+            <th class="px-6 py-3">Email</th>
+            <th class="px-6 py-3">Customer Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @available_agents.each do |agent| %>
+            <tr class="bg-gray-800 border-gray-700">
+              <td class="border-gray-700 text-white px-6 py-3"><%= agent["name"] %></td>
+              <td class="border-gray-700 px-6 py-3"><%= agent["email"] %></td>
+              <td class="border-gray-700 px-6 py-3"><%= agent["current_customer_count"] %></td>
+            </tr>
+          <% end %>
+          <% if @available_agents.empty? %>
+            <tr class="bg-gray-800 border-gray-700">
+              <td colspan="3" class="border-gray-700 text-center px-6 py-3"> There's no available agent </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
