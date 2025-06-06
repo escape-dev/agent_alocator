@@ -11,10 +11,6 @@ class ApiClient
     })
   end
 
-  def self.get_all_channels
-    get("/api/v2/channels")
-  end
-
   private
 
   def self.headers
