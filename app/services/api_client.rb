@@ -1,8 +1,6 @@
 class ApiClient
   def self.get_available_agents
-    response = get("/api/v2/admin/agents")
-    agents = response.dig("data", "agents") || []
-
+    agents = get_agents.dig("data", "agents") || []
     agents.filter_map do |agent|
       next unless  agent["is_available"] && !agent["force_offline"]
 
@@ -13,6 +11,10 @@ class ApiClient
         current_customer_count: agent["current_customer_count"]
       }
     end
+  end
+
+  def self.get_agents
+    get("/api/v2/admin/agents")
   end
 
   def self.assign_agent(room_id:, agent_id:)
