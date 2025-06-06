@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_04_171000) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_06_054113) do
   create_table "masters", force: :cascade do |t|
     t.integer "max_customer_per_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "room_queues", force: :cascade do |t|
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
