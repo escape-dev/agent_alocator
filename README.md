@@ -1,24 +1,27 @@
-# README
+# 🚀 Tech Stack
+* Ruby: ``` 3.2.2 ```
+* Ruby on Rails: ``` 8.0.2 ```
+* Database: ``` sqlite3 ```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ⚙️ Setup Instructions
+## 1. Install dependencies
+######
+    bundle install
 
-Things you may want to cover:
+## 2. Setup the database
+###### 
+    rails db:migrate 
+    
+## 3. Create the environment file
+###### 
+    cp .env.example .env 
+    
+## 4. Fill in your environment variables in ``` .env ```
+######
+    QISCUS_APP_ID = your_app_id
+    QISCUS_BASE_URL = https://example-url.com
+    QISCUS_SECRET_KEY = your_secret_key
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 5. 
+######
+    rails s 
