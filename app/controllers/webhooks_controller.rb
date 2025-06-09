@@ -1,4 +1,5 @@
 class WebhooksController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_available_agent
   before_action :set_next_room
 
