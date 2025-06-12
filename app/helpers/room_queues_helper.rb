@@ -1,0 +1,2 @@
+module RoomQueuesHelper
+end

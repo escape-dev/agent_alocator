@@ -8,17 +8,29 @@
         <thead class="uppercase bg-gray-700">
           <tr>
             <th class="px-6 py-3">Room Id</th>
+            <th class="px-6 py-3">Action</th>
           </tr>
         </thead>
         <tbody>
           <% @room_queues.each do |room_queue| %>
             <tr class="bg-gray-800 border-gray-700">
               <td class="border-gray-700 text-white px-6 py-3"><%= room_queue.room_id %></td>
+              <td class="border-gray-700 text-white px-6 py-3">
+                <%= 
+                  button_to "Delete", 
+                  room_queue_path(room_queue.id), 
+                  method: :delete, 
+                  class:"px-4 py-2 bg-red-500 rounded-lg cursor-pointer hover:bg-red-600",
+                  form: { 
+                    data: { turbo_confirm: "Are you sure?" }
+                  }
+                %>
+              </td>
             </tr>
           <% end %>
           <% if @room_queues.empty? %>
             <tr class="bg-gray-800 border-gray-700">
-              <td class="border-gray-700 px-6 py-3 text-center"> There's no queued room </td>
+              <td colspan="2" class="border-gray-700 px-6 py-3 text-center"> There's no queued room </td>
             </tr>
           <% end %>
         </tbody>
